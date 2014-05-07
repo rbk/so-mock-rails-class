@@ -1,9 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
+<h3>Viewing questions on</h3>
+<h1><%= @subject.name %></h1>
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Back', subjects_path %>
+<% @subject.questions.each do |question| %>
+  <div class="question-block">
+      
+      <div class="answers">
+        Answers
+        <%= question.answers.count %>
+      </div>
+      <div class="the-question">
+        <h3><%= link_to question.question, question %></h3>
+      </div>
+      <% if current_user %>
+        <div class="admin-actions">
+          <%= link_to 'Show', question %> | <%= link_to 'Edit', edit_question_path(question) %> |
+          <%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
+  </div>
+<% end %>
+
+
+
+<%= link_to 'Ask a new question', new_question_path %><br/>
+
+<% if current_user %>
+	<%= link_to 'Edit', edit_subject_path(@subject) %> |
+<% end %>
+<%= link_to 'Back', subjects_path  %>

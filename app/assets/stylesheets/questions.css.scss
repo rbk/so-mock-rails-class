@@ -1,3 +1,25 @@
 // Place all the styles related to the Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.question-block {
+	border: 1px solid #ddd;
+	padding: 1em;
+	background-color: #eee;
+	margin-bottom: 1em;
+	overflow: hidden;
+	h3 {
+		margin: 0;
+	}
+	.answers {
+		width: 20%;
+		float: left;
+	}
+	.the-question {
+		width: 47%;
+		float: left;
+	}
+	.admin-actions {
+		width: 30%;
+		float: right;
+	}
+}

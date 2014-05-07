@@ -1,14 +1,18 @@
 QuestionsAnswers::Application.routes.draw do
 
-  root 'subjects#index'
-  get 'login' => 'users#login'
-  post 'login' => 'users#authenticate'
+  root 'questions#index'
+  get 'login' => 'session#new'
+  post 'signin' => 'session#signin'
+  delete 'signout' => 'session#signout'
 
+  # post 'login' => 'users#authenticate'
+  resources :sessions
   resources :users
   resources :subjects
-  resources :questions do
-    resources :answers
-  end
+    resources :questions do
+      resources :answers
+    end
+  # end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

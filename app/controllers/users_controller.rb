@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_access
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  def authenticate
-    
-  end
 
   # GET /users
   # GET /users.json
