@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_access
   	if session[:user_id].nil?
-  		redirect_to login_path, notice: "You must be logged in."
+  		redirect_to login_path, notice: "You must be logged in. Username: admin, password: admin"
   	end
   end
 

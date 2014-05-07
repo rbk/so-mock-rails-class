@@ -1,6 +1,6 @@
 QuestionsAnswers::Application.routes.draw do
 
-  root 'questions#index'
+  root 'subjects#index'
   get 'login' => 'session#new'
   post 'signin' => 'session#signin'
   delete 'signout' => 'session#signout'
@@ -9,10 +9,9 @@ QuestionsAnswers::Application.routes.draw do
   resources :sessions
   resources :users
   resources :subjects
-    resources :questions do
-      resources :answers
-    end
-  # end
+  resources :questions do
+    resources :answers
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

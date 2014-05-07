@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_access, except: [:show, :new, :create, :index]
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
@@ -56,7 +57,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url }
+      format.html { redirect_to subject_path(@question.subject_id), notice: "Question deleted" }
       format.json { head :no_content }
     end
   end

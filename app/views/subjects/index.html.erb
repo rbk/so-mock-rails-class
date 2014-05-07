@@ -3,8 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
+      <th>Subject name</th>
+      <th>Answer count</th>
       <th></th>
       <th></th>
     </tr>
@@ -13,7 +13,8 @@
   <tbody>
     <% @subjects.each do |subject| %>
       <tr>
-        <td style="overflow:hidden"><div style="width: 200px;float: left;"><%= link_to subject.name, subject %></div> <i style="float:right;">Questions: <%= subject.questions.count %></i></td>
+        <td><%= link_to subject.name, subject %></td>
+        <td><%= subject.questions.count %></td>
         <% if current_user %>
           <td><%= link_to 'Show', subject %></td>
           <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
@@ -26,5 +27,5 @@
 
 <br>
 <% if current_user %>
-  <%= link_to 'New Subject', new_subject_path %>
+  <div class="button"><%= link_to 'New Subject', new_subject_path %></div>
 <% end %>
